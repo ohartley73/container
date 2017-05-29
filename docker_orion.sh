@@ -21,6 +21,7 @@ clear
 
 echo "Ahora vamos a hacer un update Ubuntu para tener todas las librerias al dia"
 echo "apt-get update && apt-get upgrade -y"
+echo ""
 read -p "Precione enter para continuar"
 apt-get update && apt-get upgrade -y
 clear
@@ -50,6 +51,7 @@ echo "con el comando:"
 echo "docker version"
 echo ""
 read -p "Precione enter para continuar"
+clear
 docker version
 echo ""
 read -p "Precione enter para continuar"
