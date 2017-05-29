@@ -2,21 +2,27 @@
 # -*- ENCODING: UTF-8 -*-
 #source sourcefile
 
+RED='\033[0;31m'
+BLUE='\033[0;34m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
+
 clear
-echo "Este script tiene como fin automatizar la implementacion de un ambiente"
-echo "Docker, con el fin de mostrar lo rapido y sencillo que es la tecnologia de Container"
-echo "En vez de solicitar que uds hagan copy paste, este script hace la pega por uds. La idea principal"
-echo "es que se entienda lo que esta haciendo."
-echo "De todas maneras ustedes tendran una presentacion con los mismos comandos para que despues puedan hacer lo mismo en sus oficinas"
-echo "lo que haremos es:"
-echo "1. Actualizar Ubuntu."
-echo "2. Instalar Docker"
-echo "3. Crear un container con MariaDB"
-echo "4. Crear un contauner con Wordpress"
-echo "5. Instalar el servidor web NGINX, pero no en container, sino que localmente"
-echo "6. Ingresar a nuestro wordpress Containerizado"
+echo -e "${BLUE}Este script tiene como fin automatizar la implementacion de un ambiente"
+echo -e "${BLUE}Docker, con el fin de mostrar lo rapido y sencillo que es la tecnologia de Container"
+echo "${BLUE}En vez de solicitar que uds hagan copy paste, este script hace la pega por uds. La idea principal"
+echo "${BLUE}es que se entienda lo que esta haciendo."
+echo "${BLUE}De todas maneras ustedes tendran una presentacion con los mismos comandos para que despues puedan hacer lo mismo en sus oficinas"
+echo "${BLUE}lo que haremos es:"
+echo "${BLUE}1. Actualizar Ubuntu."
+echo "${BLUE}2. Instalar Docker"
+echo "${BLUE}3. Crear un container con MariaDB"
+echo "${BLUE}4. Crear un contauner con Wordpress"
+echo "${BLUE}5. Instalar el servidor web NGINX, pero no en container, sino que localmente"
+echo "${BLUE}6. Ingresar a nuestro wordpress Containerizado"
 echo ""
-read -p "Precione enter para continuar"
+read -p "${GREEN}Precione enter para continuar"
 clear
 
 echo "Primero lo primero, para que despues no digan que venia todo cocinado :)"
