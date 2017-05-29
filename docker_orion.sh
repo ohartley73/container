@@ -124,15 +124,69 @@ echo "Gracias!"
 read -p "Precione enter para continuar"
 clear
 
-echo "Para conectarnos a mariadb, necesitamos el cliente de mariadb para poder conectarnos, para ello ejecutaremos el siguiente comando"
-echo "apt-get install -y mariadb-client-core-10.0"
-apt-get install -y mariadb-client-core-10.0
+#echo "Para conectarnos a mariadb, necesitamos el cliente de mariadb para poder conectarnos, para ello ejecutaremos el siguiente comando"
+#echo "apt-get install -y mariadb-client-core-10.0"
+#apt-get install -y mariadb-client-core-10.0
+#echo ""
+#read -p "Precione enter para continuar"
+#clear
+
+#mysql -u wpuser -h 172.17.0.2 -p 
+#Show databases;
+#exit
+
+#echo "Funcionando"
+
+echo "Ahora instalaremos el container de Wordpress!"
+echo "El container de mariadb, lo que hicimos fue bajarlo y luego ejecutarlo"
+echo "En el caso de wordpress haremos algo distinto. Simplemete le diremos que ejecute el container"
+echo "Docker siempre primero verificara si tiene el container en local, si no lo tiene lo baja. Por ende,"
+echo "el comando pull que dicimos con mariadb no es estrictamete necesario."
+echo "Denuevo, la manera de leer el comando es docker run -e, luedo salta al la ultima palabra del comando, y te daras cuenta que vamos por el buen camino"
+echo "entremedio le estamos diciendo a wordpress los siguiete:
+echo "1. el usuario de la base de datos es wpuser"
+echo "2. la contraseña para la base de datos es wpuser@"
+echo "3. la base de datos se llama wordpress_db, y luego le entrega parametros de donde esta la base de datos"
+echo ""
+echo "el comando es:"
+echo "docker run -e WORDPRESS_DB_USER=wpuser -e WORDPRESS_DB_PASSWORD=wpuser@ -e WORDPRESS_DB_NAME=wordpress_db -p 8081:80 -v /root/wordpress/html:/var/www/html --link wordpressdb:mysql --name wpcontainer -d wordpress"
+docker run -e WORDPRESS_DB_USER=wpuser -e WORDPRESS_DB_PASSWORD=wpuser@ -e WORDPRESS_DB_NAME=wordpress_db -p 8081:80 -v /root/wordpress/html:/var/www/html --link wordpressdb:mysql --name wpcontainer -d wordpress
 echo ""
 read -p "Precione enter para continuar"
 clear
 
-mysql -u wpuser -h 172.17.0.2 -p 
-Show databases;
-exit
+echo "Veamos ahora los containers que se estan ejecutando con el comando docker ps"
+echo "docker ps"
+docker ps
+echo ""
+read -p "Precione enter para continuar"
+clear
 
-echo "Funcionando"
+echo "Ya estamos casi listos."
+echo "Tenemos wordpress y la base de datos, solo nos falta instalar el servidor web y estamos listos"
+echo "El servidor web va a ser NGINX, es el que esta de moda ahora :)"
+echo "Lo instalaremos localmente en este servidor y abriremos el puerto 80 para que puedan acceder a el."
+echo "para instalar ejecutaremos el siguiente comando"
+echo "apt-get install -y nginx"
+echo ""
+read -p "Precione enter para continuar"
+apt-get install -y nginx
+echo ""
+read -p "Precione enter para continuar"
+clear
+
+echo "Ahora configuraremos el servidor web"
+echo "No explicaremos lo que se hara en detalle ya que no es el objetivo de este tutorial"
+echo "cd container/"
+echo "mv wordpress /etc/nginx/sites-available/"
+echo "cd .."
+echo ""
+read -p "Precione enter para continuar"
+cd container/
+mv wordpress /etc/nginx/sites-available/
+cd ..
+ln -s /etc/nginx/sites-available/wordpress /etc/nginx/sites-enabled/
+rm -f /etc/nginx/sites-available/default
+rm -f /etc/nginx/sites-enabled/default
+systemctl restart nginx
+clear
