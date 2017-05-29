@@ -5,8 +5,9 @@
 clear
 echo "Este script tiene como fin automatizar la implementacion de un ambiente"
 echo "Docker, con el fin de mostrar lo rapido y sencillo que es la tecnologia de Container"
-echo "La automatizacion solo tiene como fin evitar errores de escritura y la idea principal"
-echo "es que se entienda lo que esta haciendo"
+echo "En vez de solicitar que uds hagan copy paste, este script hace la pega por uds. La idea principal"
+echo "es que se entienda lo que esta haciendo."
+echo "De todas maneras ustedes tendran una presentacion con los mismos comandos para que despues puedan hacer lo mismo en sus oficinas"
 echo "lo que haremos es:"
 echo "1. Actualizar Ubuntu."
 echo "2. Instalar Docker"
@@ -19,7 +20,6 @@ read -p "Precione enter para continuar"
 clear
 
 echo "Ahora vamos a hacer un update Ubuntu para tener todas las librerias al dia"
-echo "sudo -s"
 echo "apt-get update && apt-get upgrade -y"
 read -p "Precione enter para continuar"
 apt-get update && apt-get upgrade -y
@@ -30,6 +30,7 @@ echo "Ahora instalaremos Docker."
 echo "Docker es lo que permite que los containers funcionen"
 echo "El comando es:"
 echo "apt-get install -y docker.io"
+echo ""
 read -p "Precione enter para continuar"
 apt-get install -y docker.io
 clear
@@ -38,23 +39,29 @@ echo "Listo instalamos Docker, ahora vamos a verificar que el servicio Docker es
 echo "Para eso usaremos los siguientes comandos"
 echo "systemctl start docker"
 echo "systemctl enable docker"
+echo ""
+read -p "Precione enter para continuar"
 systemctl start docker
 systemctl enable docker
-echo " Listo ahora verificaremos que Docker esta corriendo preguntando al systema por la version de 
+echo ""
+echo "Listo ahora verificaremos que Docker esta corriendo preguntando al systema por la version de 
 docker"
 echo "con el comando:"
 echo "docker version"
+echo ""
 read -p "Precione enter para continuar"
 docker version
+echo ""
 read -p "Precione enter para continuar"
 clear
 
 echo "Ahora vamos a correr nuestro primer container"
-echo "Este container es una aplicacion muy sencilla que lo unico que hace es escribir 'Hello World' en pantalla, y ademas de otro texto."
+echo "Este container es una aplicacion muy sencilla que lo unico que hace es escribir 'Hello World' en pantalla, ademas de un texto explicativo."
 echo "El comando para correr un Container es docker run [nombre del container]"
 echo "En ese caso"
 echo "docker run hello-world"
 read -p "Precione enter para continuar"
+clear
 docker run hello-world
 read -p "Precione enter para continuar"
 clear
@@ -64,6 +71,7 @@ echo "Para lo cual primero traeremos a este servidor la imagen de un container d
 echo "docker pull mariadb"
 read -p "Precione enter para continuar"
 docker pull mariadb
+echo ""
 read -p "Precione enter para continuar"
 clear
 
@@ -107,6 +115,7 @@ read -p "Precione enter para continuar"
 docker ps
 echo ""
 read -p "Precione enter para continuar"
+clear
 
 echo "ahora comprobemos que la base de dato este ahi y metamonos en ella"
 echo "Para ellos primero debemos saber en que IP esta corriendo la base de datos, eso lo obtenemos con el siguiente comando"
@@ -143,7 +152,7 @@ echo "En el caso de wordpress haremos algo distinto. Simplemete le diremos que e
 echo "Docker siempre primero verificara si tiene el container en local, si no lo tiene lo baja. Por ende,"
 echo "el comando pull que dicimos con mariadb no es estrictamete necesario."
 echo "Denuevo, la manera de leer el comando es docker run -e, luedo salta al la ultima palabra del comando, y te daras cuenta que vamos por el buen camino"
-echo "entremedio le estamos diciendo a wordpress los siguiete:
+echo "entremedio le estamos diciendo a wordpress los siguiete:"
 echo "1. el usuario de la base de datos es wpuser"
 echo "2. la contraseña para la base de datos es wpuser@"
 echo "3. la base de datos se llama wordpress_db, y luego le entrega parametros de donde esta la base de datos"
@@ -190,3 +199,7 @@ rm -f /etc/nginx/sites-available/default
 rm -f /etc/nginx/sites-enabled/default
 systemctl restart nginx
 clear
+
+
+
+
