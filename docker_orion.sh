@@ -19,6 +19,22 @@ echo ""
 read -p "Precione enter para continuar"
 clear
 
+echo "Primero lo primero, para que despues no digan que venia todo cocinado :)"
+echo "Obtengamos la ip publica de este servidor:"
+echo ""
+myip="$(dig +short myip.opendns.com @resolver1.opendns.com)"
+echo "La ip publica es: ${myip}"
+echo ""
+echo "Tome nota de esa IP y abra el browser que mas le guste y en la direcion web ponga la IP que anotaste."
+echo "Deberia verse asi http://xxx.xxx.xxx.xxx/"
+echo "dale enter, y...... No va a cargar nada y terminara dando un error!"
+echo "Eso es lo que queremos, estoy demostrando que en este servidor no hay nada y al final de este ejercicio, al cargar la misma IP,"
+echo "deberia aparacer WordPress CHAN!"
+echo ""
+read -p "Precione enter para continuar"
+clear
+
+
 echo "Ahora vamos a hacer un update Ubuntu para tener todas las librerias al dia"
 echo "apt-get update && apt-get upgrade -y"
 echo ""
