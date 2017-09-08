@@ -19,12 +19,12 @@ PATH=$PATH:/usr/local/share/google/google-cloud-sdk/bin/
 clear
 
 echo "Ingresar el Nombre del Proyecto GCP:"
-read PROYECTO_ID
+read project
 read -p "Presione Enter para Continuar"
 clear
 
 echo "CREANDO MAQUINA VIRTUAL"
-gcloud config set project $PROYECTO_ID
+gcloud config set project $project
 # gcloud compute instances create instance-name --scopes storage-rw,bigquery,compute-rw --image container-vm --zone europe-west1$
 echo "TERMINO LA CREACION DE LA MAQUINA VIRTUAL"
 read -p "Presione Enter para Continuar"
