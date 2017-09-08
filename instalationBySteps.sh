@@ -32,9 +32,9 @@ clear
 
 echo "ACTUALIZANDO COMPONENTES DE GCLOUD"
 echo "gcloud components update"
-gcloud components update
+apt-get update && sudo apt-get --only-upgrade install kubectl google-cloud-sdk google-cloud-sdk-datastore-emulator google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-go google-cloud-sdk-app-engine-java google-cloud-sdk-app-engine-python google-cloud-sdk-cbt google-cloud-sdk-bigtable-emulator google-cloud-sdk-datalab
 echo "gcloud components install kubectl alpha beta"
-gcloud components install kubectl alpha beta
+apt-get install kubectl google-cloud-sdk google-cloud-sdk
 echo $PATH
 read -p "Presione Enter para Continuar"
 clear
